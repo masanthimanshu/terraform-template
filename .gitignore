@@ -19,3 +19,6 @@ crash.*.log
 # Environment-specific files
 *.tfvars
 *.tfplan
+
+# Other files
+.DS_Store
