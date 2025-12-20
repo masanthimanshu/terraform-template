@@ -16,11 +16,13 @@ provider "aws" {
 resource "aws_instance" "test_instance" {
   instance_type          = "t2.micro"
   key_name               = "testing_key"
+  iam_instance_profile   = "TestingRole"
   ami                    = "ami-00ca570c1b6d79f36"
   vpc_security_group_ids = ["sg-03e6b50ee28ef44af"]
 
   tags = {
     Name = "TestInstance"
+    Role = "BackendServer"
   }
 
   root_block_device {
