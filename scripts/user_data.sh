@@ -3,6 +3,7 @@ set -e
 
 sudo yum install nginx -y
 sudo yum install docker -y
+sudo yum install golang -y
 
 sudo systemctl enable nginx
 sudo systemctl enable docker
@@ -27,3 +28,11 @@ EOF
 
 cd /home/ec2-user/database
 sudo docker-compose up -d
+
+cd /home/ec2-user
+
+sudo go install sigs.k8s.io/kind@v0.31.0
+sudo mv /root/go/bin/kind /bin/kind
+sudo chmod +x /bin/kind
+
+sudo kind create cluster
